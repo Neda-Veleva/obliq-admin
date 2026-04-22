@@ -1,0 +1,17 @@
+{
+  "name": "obliq-administration",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "predev": "rm -rf .next-dev",
+    "dev": "next dev",
+    "prebuild": "rm -rf .next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^15.5.15",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  }
+}
