@@ -1200,6 +1200,8 @@ export default function HomePage() {
       appointments: [...prev.appointments, newAppointment],
     }));
     setBookingMessage("Записът е добавен успешно.");
+    setCalendarDate(bookingForm.date);
+    setActiveView("calendar");
     setBookingForm((prev) => ({
       ...prev,
       kind: "existing",
