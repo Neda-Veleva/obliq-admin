@@ -19,11 +19,11 @@ const VIEW_TITLES = {
   bookingNew: "Нов запис",
   specialists: "Специалисти",
   specialistEdit: "Редакция на специалист",
-  problems: "Проблеми",
-  problemEdit: "Редакция на проблем",
+  problems: "Състояния",
+  problemEdit: "Редакция на състояние",
   treatments: "Процедури",
   treatmentEdit: "Редакция на процедура",
-  mapping: "Проблеми ↔ Процедури",
+  mapping: "Състояния ↔ Процедури",
   pricing: "Ценоразпис",
   priceEdit: "Редакция на услуга",
   cms: "CMS Страници",
@@ -134,7 +134,7 @@ function slugify(value) {
 }
 
 function normalizeProblem(problem, index = 0) {
-  const name = problem?.name || `Проблем ${index + 1}`;
+  const name = problem?.name || `Състояние ${index + 1}`;
   return {
     id: problem?.id || uid("p"),
     name,
@@ -1373,7 +1373,7 @@ export default function HomePage() {
     const newProblem = normalizeProblem(
       {
         id: uid("p"),
-        name: "Нов проблем",
+        name: "Ново състояние",
         description: "",
         clinicalOverview: "",
         affectedZones: "",
@@ -1761,7 +1761,7 @@ export default function HomePage() {
                     Управление на специалисти
                   </button>
                   <button type="button" onClick={() => setActiveView("problems")}>
-                    Управление на проблеми
+                    Управление на състояния
                   </button>
                   <button type="button" onClick={() => setActiveView("treatments")}>
                     Управление на процедури
@@ -1945,7 +1945,7 @@ export default function HomePage() {
                       </div>
 
                       <div className="control-row">
-                        <label>Активни проблеми</label>
+                        <label>Активни състояния</label>
                         <div className="pills">
                           {selectedClient.skinProfile.problems.length ? (
                             selectedClient.skinProfile.problems.map((problemId) => (
@@ -2041,7 +2041,7 @@ export default function HomePage() {
                       </div>
 
                       <div className="control-row">
-                        <label>Проблеми (multi-select)</label>
+                        <label>Състояния (multi-select)</label>
                         <div className="check-grid">
                           {data.problems.map((problem) => (
                             <label key={problem.id}>
@@ -2634,7 +2634,7 @@ export default function HomePage() {
           <section>
             <article className="card selector-card">
               <div className="card-head">
-                <h3>Проблеми</h3>
+                <h3>Състояния</h3>
                 <button type="button" className="text-btn" onClick={addProblem}>
                   + Нов
                 </button>
@@ -2666,11 +2666,11 @@ export default function HomePage() {
           <section>
             <article className="card editor-card">
               {!selectedProblem || !problemDraft ? (
-                <EmptyState text="Избери проблем за редакция." />
+                <EmptyState text="Избери състояние за редакция." />
               ) : (
                 <form className="entity-form" onSubmit={saveProblem}>
                   <div className="card-head">
-                    <h3>Редакция на проблем</h3>
+                    <h3>Редакция на състояние</h3>
                     <button type="button" className="text-btn" onClick={() => setActiveView("problems")}>
                       Назад към списък
                     </button>
@@ -2775,14 +2775,14 @@ export default function HomePage() {
                   </div>
 
                   <div className="editor-actions">
-                    <button type="submit">Запази проблем</button>
+                    <button type="submit">Запази състояние</button>
                     <button
                       type="button"
                       className="danger-btn"
                       onClick={deleteProblem}
                       disabled={data.problems.length <= 1}
                     >
-                      Изтрий проблем
+                      Изтрий състояние
                     </button>
                   </div>
                 </form>
@@ -2973,7 +2973,7 @@ export default function HomePage() {
             <div className="grid content-grid">
               <article className="card selector-card">
                 <div className="card-head">
-                  <h3>Проблеми</h3>
+                  <h3>Състояния</h3>
                 </div>
                 <div className="choice-list">
                   {data.problems.map((problem) => (
